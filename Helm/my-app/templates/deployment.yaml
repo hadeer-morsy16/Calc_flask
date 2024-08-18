@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+  namespace: webapps
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: {{ .Values.image }}
+        resources:
+          limits:
+            memory: {{ .Values.memoryRequest }}
+            cpu: {{ .Values.cpuRequest }}
+        ports:
+        - containerPort: {{ .Values.containerPort }}
