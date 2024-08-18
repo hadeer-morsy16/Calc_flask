@@ -1,3 +1,4 @@
+[![Test](https://github.com/hadeer-morsy16/Test_calc/actions/workflows/pytest.yml/badge.svg?branch=main)](https://github.com/hadeer-morsy16/Test_calc/actions/workflows/pytest.yml)
 # Calculator App using Python and Flask
 
 ## SetUp 
@@ -5,7 +6,7 @@
 ### 1- Clone Repository
 
 ```sh
-https://github.com/hadeer-morsy/Test_calc
+https://github.com/hadeer-morsy16/Test_calc
 ```
 
 ### 2- Create a Virtual Environment
@@ -114,9 +115,11 @@ ansible-playbook site.yml -c ./.ansible.cfg -i ./hosts.ini
 ## Kubernetes
 
 Kubernetes will create a service with three replicas of pods inside Namespace webapps in Minikube cluster and will use ingress as the entry point to this cluster.
-Pulls the image (hadeer16/test_calc) from DockerHub and start container on each pod
+Pulls the image (hadeer16/test_calc) from DockerHub and deploy container on each pod and expose it.
 ```bash
-kubectl apply -f namespace.yaml -f deployment.yaml -f service.yaml 
+kubectl apply -f namespace.yaml 
+kubectl apply -f deployment.yaml 
+kubectl apply -f service.yaml 
 kubectl apply -f ingress.yaml
 kubectl describe ingress app-ingress
 ```
